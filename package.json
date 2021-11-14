@@ -10,12 +10,12 @@
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.11.0",
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "start": "ts-node-dev index.ts",
+    "start": "ts-node-dev --respawn -r tsconfig-paths/register index.ts",
     "start:prod": "ts-node index.ts",
-    "start:dev-debug": "ts-node-dev --inspect index.ts",
     "start:debug": "node --inspect -r ts-node/register index"
   },
   "dependencies": {
