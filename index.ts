@@ -1,3 +1,1 @@
-import { config } from "./src/server";
-
-config();
+import "./src/start";

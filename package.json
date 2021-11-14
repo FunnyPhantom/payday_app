@@ -9,10 +9,14 @@
     "@tsconfig/node16": "^1.0.2",
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node-dev index.ts",
+    "start:prod": "ts-node index.ts",
+    "start:dev-debug": "ts-node-dev --inspect index.ts",
+    "start:debug": "node --inspect -r ts-node/register index"
   },
   "dependencies": {
     "@slack/bolt": "^3.8.1",
