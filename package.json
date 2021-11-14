@@ -1,0 +1,21 @@
+{
+  "name": "payday_bot",
+  "version": "1.0.0",
+  "description": "payday bot for slack",
+  "author": "moh",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "prettier": "^2.4.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.8.1",
+    "dotenv": "^10.0.0"
+  }
+}
