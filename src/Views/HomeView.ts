@@ -30,13 +30,17 @@ const homeView = (): View => ({
       dispatch_action: true,
       type: "input",
       element: {
-        initial_value: "haha",
+        initial_value: "",
         type: "plain_text_input",
         action_id: Actions.submit_btc_address,
+        placeholder: {
+          type: "plain_text",
+          text: "Input BTC address",
+        },
       },
       label: {
         type: "plain_text",
-        text: "Label",
+        text: "BTC Address",
         emoji: true,
       },
     },
