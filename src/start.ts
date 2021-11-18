@@ -4,6 +4,7 @@ import { appInstance } from "server";
 import { EnvVars } from "utils";
 import { initializeHandlers } from "handlers";
 import { initMongoose } from "./scripts";
+import { test } from "./socketTest";
 
 initializeHandlers(appInstance);
 
@@ -15,5 +16,7 @@ const startServer = async () => {
     console.log(`Slack App is running at port ${EnvVars.SLACK_APP_PORT}`);
   });
 };
+
+test();
 
 startServer().finally();
