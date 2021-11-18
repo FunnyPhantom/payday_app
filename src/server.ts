@@ -1,5 +1,5 @@
 import { App } from "@slack/bolt";
-import { EnvVars } from "uitls/EnvVars";
+import { EnvVars } from "utils";
 
 const appInstance = new App({
   token: EnvVars.SLACK_APP_BOT_TOKEN,

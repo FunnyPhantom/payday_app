@@ -1,14 +1,15 @@
 import { View } from "@slack/bolt";
 import { Actions } from "handlers/actionHandlers/actions";
+import { IUserModel } from "Models";
 
-const homeView = (): View => ({
+const homeView = (user: IUserModel | null): View => ({
   type: "home",
   blocks: [
     {
       type: "header",
       text: {
         type: "plain_text",
-        text: "Welcome to Payday Bot!",
+        text: `Welcome to Payday Bot!`,
         emoji: true,
       },
     },
@@ -30,7 +31,7 @@ const homeView = (): View => ({
       dispatch_action: true,
       type: "input",
       element: {
-        initial_value: "",
+        initial_value: user?.btcAddress ?? "",
         type: "plain_text_input",
         action_id: Actions.submit_btc_address,
         placeholder: {
@@ -43,6 +44,22 @@ const homeView = (): View => ({
         text: "BTC Address",
         emoji: true,
       },
+    },
+    { type: "divider" },
+    {
+      type: "actions",
+      elements: [
+        {
+          type: "button",
+          text: {
+            type: "plain_text",
+            text: user?.isMemeMode ? "Disable Meme Mode" : "Enable Meme Mode",
+            emoji: true,
+          },
+          value: (!!user?.isMemeMode).toString(),
+          action_id: Actions.toggle_meme_mode,
+        },
+      ],
     },
   ],
 });
