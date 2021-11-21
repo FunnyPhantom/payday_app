@@ -7,6 +7,7 @@
   "private": true,
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
+    "@types/ws": "^8.2.0",
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
@@ -23,7 +24,7 @@
     "dotenv": "^10.0.0",
     "envalid": "^7.2.2",
     "mongoose": "^6.0.13",
-    "socket.io": "^4.4.0",
-    "socket.io-client": "^4.4.0"
-  }
+    "ws": "^8.2.3"
+  },
+  "optionalDependencies": {}
 }

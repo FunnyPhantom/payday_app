@@ -2,20 +2,33 @@ import {
   App,
   BlockAction,
   ButtonAction,
-  CheckboxesAction,
   PlainTextInputAction,
   SlackActionMiddlewareArgs,
 } from "@slack/bolt";
 import { Actions } from "./actions";
 import { Middleware } from "@slack/bolt/dist/types";
 import { User } from "Models";
-import { homeView } from "../../Views/HomeView";
+import { homeView } from "Views/HomeView";
+import { blockChainClient, OPS } from "../../io/BlockChainClient";
+
+const handleSubscribe = (
+  newAddress: string,
+  oldAddress: string | undefined
+) => {
+  if (oldAddress) {
+    console.log(`Unsubbed for ${oldAddress}`);
+    blockChainClient.send({ op: OPS.ADDRESS_UNSUB, addr: oldAddress });
+  }
+  console.log(`Subbed to ${newAddress}`);
+  blockChainClient.send({ op: OPS.ADDRESS_SUB, addr: newAddress });
+};
 
 const submitBtcAddress: Middleware<
   SlackActionMiddlewareArgs<BlockAction<PlainTextInputAction>>
 > = async ({ ack, action, client, body, context, payload }) => {
   const currentUser = await User.findOne({ userId: body.user.id });
   if (currentUser) {
+    handleSubscribe(payload.value, currentUser.btcAddress);
     currentUser.btcAddress = payload.value;
     await currentUser.save();
   }
